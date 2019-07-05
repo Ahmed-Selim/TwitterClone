@@ -1,0 +1,13 @@
+.app-bg {
+    background-size: cover ;
+    background-repeat: no-repeat ;
+    background-position: center center ;
+}
+
+#profile_image {
+    position: relative ;
+    top: -80px ;
+    height: 160px;
+    width: 160px;
+    border: white 4px solid ;
+}

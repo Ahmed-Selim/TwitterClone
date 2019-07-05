@@ -15,6 +15,12 @@
                     @endif
 
                     You are logged in!
+
+                    <div>
+                        @php
+                            echo  '<pre>' . json_encode(Auth::user(), JSON_PRETTY_PRINT) . '</pre>' ;
+                        @endphp
+                    </div>
                 </div>
             </div>
         </div>

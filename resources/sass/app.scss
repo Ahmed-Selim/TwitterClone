@@ -6,3 +6,19 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+#floating {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    font-size: large;
+    height: 45px;
+    width: 110px;
+}
+
+#wallpaper {
+    background-image: url('../../public/img/wallpaper.jpg') ;
+    background-position: center center ;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

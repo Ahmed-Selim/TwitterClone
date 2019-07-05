@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>TwitterClone</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -49,7 +49,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -63,7 +63,7 @@
             }
         </style>
     </head>
-    <body>
+    <body id="wallpaper">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -81,10 +81,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                        TwitterClone
+                </div>
+                <div class="blockquote">
+                    Twitter clone "Social Media Website"
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -92,8 +95,11 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
+            <footer style="position: absolute;bottom: 15px;">
+                Created by Ahmed Selim
+            </footer>
         </div>
     </body>
 </html>

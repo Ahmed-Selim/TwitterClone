@@ -17,4 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resources([
+    'users' => 'UserController',
+    'profiles' => 'ProfileController' ,
+    'tweets' => 'TweetController',
+    'tweet-tags' => 'TweetTagController'
+]);
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profiles/search/{pro}', 'ProfileController@search');
+Route::get('/profiles/{user}/followlist', 'FollowController@show')->name('followlist');
+Route::post('/follow/{user}', 'FollowController@store')->name('follow') ;
