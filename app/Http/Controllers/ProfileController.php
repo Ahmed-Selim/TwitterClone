@@ -36,6 +36,10 @@ class ProfileController extends Controller
 
     public function store(ProfileRequest $request)
     {
+        if (!$request['profile_image'])
+        {
+            $request['profile_image'] = '/img/'.$request['gender'].'.png' ;
+        }
         auth()->user()->profile()->create(
             array_merge(
                 $request->all(),
@@ -75,14 +79,14 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request, Profile $profile)
     {
         $this->authorize('update', $profile) ;
-        auth()->user()->profile()->update(
+
+        auth()->user()->profile->update(
             array_merge(
                 $request->except(['_token', '_method']),
                 $this->imageArray($request)
             )
         );
-
-        return redirect('/profiles/'.auth()->user()->id);
+        return redirect("/profiles/{$profile->id}");
     }
 
     public function destroy(Profile $profile)
@@ -93,7 +97,12 @@ class ProfileController extends Controller
     public function search ($pro) {
         $profiles = Profile::where("username", "like", "%{$pro}%")
             ->orWhere("name", "like", "%{$pro}%")->get() ;
-        $latestProfiles = Profile::latest()->limit(5)->get()->toArray() ;
+            $latestProfiles =
+            // Profile::latest()->limit(5)->get()->toArray() ;
+            Profile::whereNotIn('user_id', array_merge(
+                [ auth()->user()->profile->id ],
+                auth()->user()->following->pluck('id')->toArray()
+            ))->get();
         $latestTags = TweetTag::with('tweets')->latest()->limit(5)->get()->toArray() ;
         return view("profiles.search", [
             'profiles' => $profiles,
@@ -127,7 +136,7 @@ class ProfileController extends Controller
         }
 
         return array_merge(
-            $profile_image ?? ['profile_image' => '/img/'.$request['gender'].'.png'],
+            $profile_image ?? [],
             $cover_image ?? []
         );
     }

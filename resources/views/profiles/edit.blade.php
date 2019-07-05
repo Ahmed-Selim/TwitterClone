@@ -8,16 +8,16 @@
                 <div class="card-header">Update Profile</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profiles.update', $profile) }}" enctype="multipart/form-data">
-                        @csrf
+                    <form method="POST" action="{{ route("profiles.update", $profile->id) }}" enctype="multipart/form-data">
                         @method('PATCH')
+                        @csrf
 
                         <div class="form-group row">
                             <label for="username" class="col-md-4 col-form-label text-md-right">User Name</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" 
-                                    class="form-control @error('username') is-invalid @enderror" 
+                                <input id="username" type="text"
+                                    class="form-control @error('username') is-invalid @enderror"
                                     name="username" value="{{ old('username') ?? $profile->username }}" required >
 
                                 @error('username')
@@ -32,8 +32,8 @@
                             <label for="bio" class="col-md-4 col-form-label text-md-right">Bio</label>
 
                             <div class="col-md-6">
-                                <textarea id="bio" type="text" 
-                                    class="form-control @error('bio') is-invalid @enderror" 
+                                <textarea id="bio" type="text"
+                                    class="form-control @error('bio') is-invalid @enderror"
                                     name="bio">{{ old('bio') ?? $profile->bio }}</textarea>
 
                                 @error('bio')
@@ -48,8 +48,8 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
 
                             <div class="col-md-6">
-                                <select id="gender" 
-                                    class="form-control @error('gender') is-invalid @enderror" 
+                                <select id="gender"
+                                    class="form-control @error('gender') is-invalid @enderror"
                                     name="gender" value="{{ old('gender') ?? $profile->gender }}" required>
                                     <option value="male" {{ (old('gender') == 'male' || $profile->gender == 'male') ? "selected":"" }}>Male</option>
                                     <option value="female" {{ (old('gender') == 'female' || $profile->gender == 'female') ? "selected":"" }}>Female</option>
@@ -67,8 +67,8 @@
                             <label for="location" class="col-md-4 col-form-label text-md-right">Location</label>
 
                             <div class="col-md-6">
-                                <input id="location" type="text" 
-                                    class="form-control @error('location') is-invalid @enderror" 
+                                <input id="location" type="text"
+                                    class="form-control @error('location') is-invalid @enderror"
                                     name="location" value="{{ old('location') ?? $profile->location }}" required />
 
                                 @error('location')
@@ -83,8 +83,8 @@
                             <label for="birth_date" class="col-md-4 col-form-label text-md-right">Birth Date</label>
 
                             <div class="col-md-6">
-                                <input id="birth_date" type="date" 
-                                    class="form-control @error('birth_date') is-invalid @enderror" 
+                                <input id="birth_date" type="date"
+                                    class="form-control @error('birth_date') is-invalid @enderror"
                                     name="birth_date" value="{{ old('birth_date') ?? $profile->birth_date }}" required />
 
                                 @error('birth_date')
@@ -94,13 +94,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="website" class="col-md-4 col-form-label text-md-right">Website</label>
 
                             <div class="col-md-6">
-                                <input id="website" type="url" 
-                                    class="form-control @error('website') is-invalid @enderror" 
+                                <input id="website" type="url"
+                                    class="form-control @error('website') is-invalid @enderror"
                                     name="website" value="{{ old('website') ?? $profile->website }}" />
 
                                 @error('website')
@@ -110,13 +110,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="profile_image" class="col-md-4 col-form-label text-md-right">Profile Image</label>
 
                             <div class="col-md-6">
-                                <input id="profile_image" type="file" accept="image/*" 
-                                    class="form-control @error('profile_image') is-invalid @enderror" 
+                                <input id="profile_image" type="file" accept="image/*"
+                                    class="form-control @error('profile_image') is-invalid @enderror"
                                     name="profile_image" />
 
                                 @error('profile_image')
@@ -126,13 +126,13 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="cover_image" class="col-md-4 col-form-label text-md-right">Cover Image</label>
 
                             <div class="col-md-6">
-                                <input id="cover_image" type="file" accept="image/*" 
-                                    class="form-control @error('cover_image') is-invalid @enderror" 
+                                <input id="cover_image" type="file" accept="image/*"
+                                    class="form-control @error('cover_image') is-invalid @enderror"
                                     name="cover_image" />
 
                                 @error('cover_image')

@@ -21,7 +21,7 @@
                     <span>#</span>{{ tag.tag }}
                 </a>
             </div>
-            <nav class="nav nav-pills nav-fill mt-2">
+            <!-- <nav class="nav nav-pills nav-fill mt-2">
                 <button class="nav-item btn border-info text-left">
                     Replies <span>{{ tweet.replies }}</span>
                 </button>
@@ -31,7 +31,7 @@
                 <button class="nav-item btn border-info text-left">
                     Likes <span>{{ tweet.likes }}</span>
                 </button>
-            </nav>
+            </nav> -->
         </div>
     </div>
 </template>

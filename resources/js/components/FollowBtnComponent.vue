@@ -26,11 +26,11 @@
                 axios.post('/follow/' + this.userId, )
                     .then((response) => {
                         this.status = !this.status ;
-                        alert("Following " + this.userId  + " is " + this.status) ;
+                        // alert("Following " + this.userId  + " is " + this.status) ;
                         // console.log(response.data);
                     })
                     .catch(error => {
-                        console.log(error) ;
+                        // console.log(error) ;
                     });
             }
         }

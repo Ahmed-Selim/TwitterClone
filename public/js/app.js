@@ -1855,8 +1855,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {// console.log('Component mounted.')
   }
 });
 
@@ -1894,10 +1893,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/follow/' + this.userId).then(function (response) {
-        _this.status = !_this.status;
-        alert("Following " + _this.userId + " is " + _this.status); // console.log(response.data);
-      })["catch"](function (error) {
-        console.log(error);
+        _this.status = !_this.status; // alert("Following " + this.userId  + " is " + this.status) ;
+        // console.log(response.data);
+      })["catch"](function (error) {// console.log(error) ;
       });
     }
   }
@@ -2381,8 +2379,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['item'],
-  mounted: function mounted() {
-    console.log(this.item);
+  mounted: function mounted() {// console.log(this.item) ;
   },
   computed: {
     baseUrl: function baseUrl() {
@@ -56041,6 +56038,17 @@ var render = function() {
         [
           _vm._m(0),
           _vm._v(" "),
+          !_vm.latestProfiles
+            ? _c(
+                "li",
+                {
+                  staticClass:
+                    "list-group-item text-center font-weight-bold text-muted"
+                },
+                [_vm._v("\n            No Profiless to display!\n        ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
           _vm._l(_vm.latestProfiles, function(profile, index) {
             return _c("follow-list-item", {
               key: index,
@@ -56059,6 +56067,17 @@ var render = function() {
         { staticClass: "list-group" },
         [
           _vm._m(1),
+          _vm._v(" "),
+          !_vm.latestTags
+            ? _c(
+                "li",
+                {
+                  staticClass:
+                    "list-group-item text-center font-weight-bold text-muted"
+                },
+                [_vm._v("\n            No Tags to display!\n        ")]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _vm._l(_vm.latestTags, function(tag, index) {
             return _c("tag-list-item", { key: index, attrs: { item: tag } })
@@ -56212,24 +56231,7 @@ var render = function() {
           )
         }),
         0
-      ),
-      _vm._v(" "),
-      _c("nav", { staticClass: "nav nav-pills nav-fill mt-2" }, [
-        _c("button", { staticClass: "nav-item btn border-info text-left" }, [
-          _vm._v("\n                Replies "),
-          _c("span", [_vm._v(_vm._s(_vm.tweet.replies))])
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "nav-item btn border-info text-left" }, [
-          _vm._v("\n                Retweets "),
-          _c("span", [_vm._v(_vm._s(_vm.tweet.retweets))])
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "nav-item btn border-info text-left" }, [
-          _vm._v("\n                Likes "),
-          _c("span", [_vm._v(_vm._s(_vm.tweet.likes))])
-        ])
-      ])
+      )
     ])
   ])
 }

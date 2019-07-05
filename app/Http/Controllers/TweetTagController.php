@@ -63,7 +63,10 @@ class TweetTagController extends Controller
     public function show(TweetTag $tweetTag)
     {
         $tweets = $tweetTag->tweets()->with("profile")->get() ;
-        $latestProfiles = Profile::latest()->limit(5)->get()->toArray() ;
+        $latestProfiles = Profile::whereNotIn('user_id', array_merge(
+            [ auth()->user()->profile->id ],
+            auth()->user()->following->pluck('id')->toArray()
+        ))->get();
         $latestTags = TweetTag::with("tweets")->latest()->limit(5)->get()->toArray() ;
         return view('tweets.show', [
             'tag' => $tweetTag->tag ,

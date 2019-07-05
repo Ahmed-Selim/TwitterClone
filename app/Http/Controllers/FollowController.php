@@ -26,7 +26,10 @@ class FollowController extends Controller
 
     public function show (User $user) {
         $user = new UserResource($user) ;
-        $latestProfiles = Profile::latest()->limit(5)->get()->toArray() ;
+        $latestProfiles = Profile::whereNotIn('user_id', array_merge(
+                [ $user->profile->id ],
+                $user->following->pluck('id')->toArray()
+            ))->get();
         $latestTags = TweetTag::with("tweets")->limit(5)->get()->toArray() ;
         // $profile = $user->profile ;
 

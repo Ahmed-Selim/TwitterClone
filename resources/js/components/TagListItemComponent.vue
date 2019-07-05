@@ -15,7 +15,7 @@
     export default {
         props: [ 'item' ],
         mounted() {
-            console.log(this.item) ;
+            // console.log(this.item) ;
         },
         computed: {
             baseUrl() {
